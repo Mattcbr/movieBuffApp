@@ -18,6 +18,7 @@ class MoviesViewController: UICollectionViewController {
     var isLoadingData: Bool = false
     let searchController = UISearchController(searchResultsController: nil)
     var filteredMovies = [MovieModel]()
+    var screenType = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,14 @@ class MoviesViewController: UICollectionViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.navigationItem.title = "Featured"
+        
+        let selectedItem = self.tabBarController?.tabBar.selectedItem
+//        let selectedItemIndex = self.tabBarController?.tabBar
+        screenType = selectedItem?.title ?? "Featured"
+        
+//        screenType = self.tabBarController?.tabBar.selectedItem //selectedIndex == 0 ? "Featured" : "Ranking"
+        
+        self.tabBarController?.navigationItem.title = screenType
         self.tabBarController?.navigationItem.searchController = searchController
     }
     
@@ -134,8 +142,8 @@ class MoviesViewController: UICollectionViewController {
         let selectedCellIndexPath = self.collectionView.indexPath(for: selectedCell)
         let selectedMovie = model!.moviesArray[selectedCellIndexPath!.row]
         
-        /*let destinationViewController = segue.destination as! DetailsViewController
-        destinationViewController.selectedMovie = selectedMovie*/
+        let destinationViewController = segue.destination as! DetailsViewController
+        destinationViewController.selectedMovie = selectedMovie
     }
 }
 
