@@ -12,38 +12,43 @@ private let reuseIdentifier = "movieCell"
 
 class MoviesViewController: UICollectionViewController {
     
-//    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     var model: MoviesViewModel?
     var isLoadingData: Bool = false
     let searchController = UISearchController(searchResultsController: nil)
     var filteredMovies = [MovieModel]()
     var screenType = String()
+    var isSearchResult: Bool = false
+    var searchedTerm: String? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if(isSearchResult){
+            screenType = "Results"
+            self.navigationItem.title = screenType
+        } else {
+            let selectedItem = self.tabBarController?.tabBar.selectedItem
+            screenType = selectedItem?.title ?? "Featured"
+        }
+        
         model = MoviesViewModel(viewController: self)
         
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Featured Movies"
-        definesPresentationContext = true
-        
-//        loadingIndicator.startAnimating()
-//        loadingIndicator.hidesWhenStopped = true;
+        loadingIndicator.startAnimating()
+        loadingIndicator.hidesWhenStopped = true;
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        let selectedItem = self.tabBarController?.tabBar.selectedItem
-//        let selectedItemIndex = self.tabBarController?.tabBar
-        screenType = selectedItem?.title ?? "Featured"
-        
-//        screenType = self.tabBarController?.tabBar.selectedItem //selectedIndex == 0 ? "Featured" : "Ranking"
+        if(!isSearchResult){
+            searchController.searchResultsUpdater = self
+            searchController.obscuresBackgroundDuringPresentation = false
+            definesPresentationContext = true
+            searchController.searchBar.placeholder = "Search \(screenType) Movies"
+            self.tabBarController?.navigationItem.searchController = searchController
+        }
         
         self.tabBarController?.navigationItem.title = screenType
-        self.tabBarController?.navigationItem.searchController = searchController
     }
     
     // MARK: - Search bar functions
@@ -105,7 +110,7 @@ class MoviesViewController: UICollectionViewController {
     
     func didLoadPopularMovies() {
         self.collectionView.reloadData()
-//        self.loadingIndicator.stopAnimating()
+        self.loadingIndicator.stopAnimating()
         self.isLoadingData = false
     }
     

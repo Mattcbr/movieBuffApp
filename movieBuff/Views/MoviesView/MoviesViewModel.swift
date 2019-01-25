@@ -20,7 +20,7 @@ class MoviesViewModel: RequestDelegate{
         controller = viewController
         
         self.requestMaker.delegate = self
-        self.requestMaker.requestPopular(pageToRequest: self.pageToRequest)
+        self.requestMaker.requestMovies(withType: self.controller.screenType, pageToRequest: self.pageToRequest, searchTerm: self.controller.searchedTerm)
         self.controller.isLoadingData = true
         self.requestMaker.requestGenres()
     }
@@ -61,6 +61,6 @@ class MoviesViewModel: RequestDelegate{
     
     func requestMoreMovies() {
         pageToRequest = pageToRequest + 1
-        self.requestMaker.requestPopular(pageToRequest: pageToRequest)
+        self.requestMaker.requestMovies(withType: self.controller.screenType, pageToRequest: pageToRequest, searchTerm: self.controller.searchedTerm)
     }
 }

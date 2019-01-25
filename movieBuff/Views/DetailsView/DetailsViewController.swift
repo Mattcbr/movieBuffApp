@@ -31,7 +31,11 @@ class DetailsViewController: UIViewController {
         self.navigationItem.title = "\(selectedMovie!.title)"
         
         setupMovieInfo()
-        setupGenreInfo()
+        if(selectedMovie!.genresIDArray.count > 0){
+            setupGenreInfo()
+        } else {
+            movieGenresLabel.text = "No genres available :("
+        }
 //        setupFavoriteInfo()
         
     }
@@ -59,6 +63,8 @@ class DetailsViewController: UIViewController {
         
         let genreToDisplay = genresString.substring(to: genresString.length-2)
         movieGenresLabel.text = genreToDisplay as String
+        movieGenresLabel.numberOfLines = 0
+        movieGenresLabel.sizeToFit()
     }
     
     /*func setupFavoriteInfo(){

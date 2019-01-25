@@ -11,15 +11,16 @@ import UIKit
 class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var movieThumbnailImageView: UIImageView!
     @IBOutlet weak var movieNameLabel: UILabel!
+    @IBOutlet weak var movieLoadingIndicator: UIActivityIndicatorView!
     
     func setupForMovie(Movie: MovieModel) {
-//        movieLoadingIndicator.hidesWhenStopped = true
+        movieLoadingIndicator.hidesWhenStopped = true
         movieNameLabel.text = Movie.title
         movieThumbnailImageView.image = Movie.thumbnail
-        /*if(!Movie.isThumbnailLoaded){
+        if(!Movie.isThumbnailLoaded){
             movieLoadingIndicator.startAnimating()
         } else {
             movieLoadingIndicator.stopAnimating()
-        }*/
+        }
     }
 }

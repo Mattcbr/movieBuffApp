@@ -23,8 +23,19 @@ class RequestMaker {
     let apiKey = "6f0d4dc1727facb3ebd5ac88b77494df"
     let responseParser = Parser.shared
     
-    func requestPopular(pageToRequest: Int) {
-        let requestURL = "https://api.themoviedb.org/3/movie/popular?api_key=\(apiKey)&language=en-US&page=\(pageToRequest)"
+    func requestMovies(withType type:String, pageToRequest: Int, searchTerm: String?) {
+        var requestURL = String()
+        
+        switch type {
+        case "Featured":
+            requestURL = "https://api.themoviedb.org/3/movie/popular?api_key=\(apiKey)&language=en-US&page=\(pageToRequest)"
+        case "Top Rated":
+            requestURL = "https://api.themoviedb.org/3/movie/top_rated?api_key=\(apiKey)&language=en-US&page=\(pageToRequest)"
+        case "Results":
+            requestURL = "https://api.themoviedb.org/3/search/movie?api_key=\(apiKey)&language=en-US&query=\(searchTerm!)&page=\(pageToRequest)&include_adult=false"
+        default:
+            requestURL = "https://api.themoviedb.org/3/movie/popular?api_key=\(apiKey)&language=en-US&page=\(pageToRequest)"
+        }
         
         Alamofire.request(requestURL).responseJSON{ response in
             switch response.result{
