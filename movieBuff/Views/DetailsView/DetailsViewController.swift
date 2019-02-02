@@ -15,7 +15,7 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var movieYearLabel: UILabel!
     @IBOutlet weak var movieGenresLabel: UILabel!
     @IBOutlet weak var movieDescriptionLabel: UILabel!
-//    @IBOutlet weak var FavoritesButton: UIButton!
+    @IBOutlet weak var FavoritesButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
     
@@ -36,7 +36,7 @@ class DetailsViewController: UIViewController {
         } else {
             movieGenresLabel.text = "No genres available :("
         }
-//        setupFavoriteInfo()
+        setupFavoriteInfo()
         
     }
     
@@ -67,23 +67,23 @@ class DetailsViewController: UIViewController {
         movieGenresLabel.sizeToFit()
     }
     
-    /*func setupFavoriteInfo(){
+    func setupFavoriteInfo(){
         isFavorite = model!.verifyIfFavorite(selectedMovie: selectedMovie!)
         if (isFavorite){
             FavoritesButton.setImage(UIImage(named: "favorite_full_icon"), for: .normal)
         } else {
             FavoritesButton.setImage(UIImage(named: "favorite_empty_icon"), for: .normal)
         }
-    }*/
+    }
     
-    /*@IBAction func didPressFavoritesButton(_ sender: Any) {
+    @IBAction func didPressFavoritesButton(_ sender: Any) {
         if (!isFavorite){
             FavoritesButton.setImage(UIImage(named: "favorite_full_icon"), for: .normal)
-//            model?.addToFavorites(selectedMovie: selectedMovie!)
+            model?.addToFavorites(selectedMovie: selectedMovie!)
         } else {
             let deleteMenu = UIAlertController(title: "Remove From Favorites", message: "Are you sure you want to remove \(selectedMovie!.title) from your favorites?", preferredStyle: UIAlertController.Style.actionSheet)
             let removeAction = UIAlertAction(title: "Remove", style: UIAlertAction.Style.destructive, handler: { (action) in
-//                self.model?.remove(fromFavorites: self.selectedMovie!)
+                self.model?.remove(fromFavorites: self.selectedMovie!)
                 self.FavoritesButton.setImage(UIImage(named: "favorite_empty_icon"), for: .normal)
             })
             let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
@@ -93,5 +93,5 @@ class DetailsViewController: UIViewController {
             
             self.present(deleteMenu, animated: true, completion: nil)
         }
-    }*/
+    }
 }

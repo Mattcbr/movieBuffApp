@@ -115,7 +115,7 @@ class MoviesViewController: UICollectionViewController {
     }
     
     func failedToLoad(withType type: String){
-        let failAlert = UIAlertController(title: "Error", message: "Failed to load \(type). If this keeps happening, contact support.", preferredStyle: UIAlertController.Style.alert)
+        let failAlert = UIAlertController(title: "Error", message: "Failed to load more movies. If this keeps happening, contact support.", preferredStyle: UIAlertController.Style.alert)
         let defaultAction = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil)
         
         failAlert.addAction(defaultAction)

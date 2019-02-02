@@ -11,11 +11,11 @@ import Foundation
 class DetailsViewModel {
     let infoParser = Parser.shared
     var controller: DetailsViewController
-//    let sharedDBManager = DBManager.shared
+    let sharedDBManager = DBManager.shared
     
     init(viewController: DetailsViewController){
         controller = viewController
-//        sharedDBManager.startDB()
+        sharedDBManager.startDB()
     }
     
     func getGenres(forMovie movie: MovieModel) {
@@ -29,7 +29,7 @@ class DetailsViewModel {
             }
         }
     }
-    /*
+    
     func addToFavorites(selectedMovie: MovieModel){
         if (sharedDBManager.dbQueue == nil){
             sharedDBManager.startDB()
@@ -45,5 +45,5 @@ class DetailsViewModel {
     
     func remove(fromFavorites movie: MovieModel){
         self.sharedDBManager.removeFromFavorites(movie: movie)
-    }*/
+    }
 }

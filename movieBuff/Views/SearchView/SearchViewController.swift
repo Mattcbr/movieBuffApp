@@ -25,7 +25,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("Detected Search Click")
         model?.checkIfSearchIsValid(searchedTerm: searchBar.text ?? "")
     }
     

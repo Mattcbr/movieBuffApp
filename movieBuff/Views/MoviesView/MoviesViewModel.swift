@@ -44,7 +44,7 @@ class MoviesViewModel: RequestDelegate{
     }*/
     
     func didFailToLoadPopularMovies(withError error: Error) {
-        print("Failed to load popular movies with error: \(error.localizedDescription)")
+        print("Failed to load more movies with error: \(error.localizedDescription)")
         controller.failedToLoad(withType: "Popular Movies")
     }
     
