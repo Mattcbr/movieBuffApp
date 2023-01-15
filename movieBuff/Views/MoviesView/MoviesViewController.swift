@@ -92,15 +92,6 @@ class MoviesViewController: UICollectionViewController {
             movieToSetup = model?.moviesArray[indexPath.row]
         }
         
-        if (!movieToSetup!.isThumbnailLoaded){
-            model?.loadImage(forMovie: movieToSetup!, completion: { (newThumbnail) in
-                movieToSetup?.thumbnail = newThumbnail
-                movieToSetup?.isThumbnailLoaded = true
-                cell.movieThumbnailImageView.image = newThumbnail
-                cell.setupForMovie(Movie: movieToSetup!)
-            })
-        }
-        
         cell.setupForMovie(Movie: movieToSetup!)
         
         return cell

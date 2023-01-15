@@ -31,6 +31,7 @@ class DetailsViewController: UIViewController {
         self.navigationItem.title = "\(selectedMovie!.title)"
         
         setupMovieInfo()
+        setupMovieImage()
         if(selectedMovie!.genresIDArray.count > 0){
             setupGenreInfo()
         } else {
@@ -41,13 +42,17 @@ class DetailsViewController: UIViewController {
     }
     
     func setupMovieInfo(){
-        posterImageViewController.image = selectedMovie?.thumbnail
         movieNameLabel.text = selectedMovie?.title
         movieYearLabel.text = "\(selectedMovie!.releaseYear.year!)"
         movieGenresLabel.text = "Loading Genres..."
         movieDescriptionLabel.text = selectedMovie?.overview
         movieDescriptionLabel.numberOfLines = 0
         movieDescriptionLabel.sizeToFit()
+    }
+    
+    func setupMovieImage() {
+        guard let thumbPath = selectedMovie?.thumbnailPath, let url = URL(string: "https://image.tmdb.org/t/p/w500/\(thumbPath)") else { return }
+        posterImageViewController.af.setImage(withURL: url)
     }
     
     func setupGenreInfo(){

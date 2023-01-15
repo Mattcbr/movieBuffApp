@@ -53,12 +53,6 @@ class MoviesViewModel: RequestDelegate{
         controller.failedToLoad(withType: "Movie Genres")
     }
     
-    func loadImage(forMovie movie:MovieModel, completion: @escaping (_ image: UIImage) -> Void){
-        requestMaker.requestImage(imagePath: movie.thumbnailPath) { (newThumbnail) in
-            completion(newThumbnail)
-        }
-    }
-    
     func requestMoreMovies() {
         pageToRequest = pageToRequest + 1
         self.requestMaker.requestMovies(withType: self.controller.screenType, pageToRequest: pageToRequest, searchTerm: self.controller.searchedTerm)

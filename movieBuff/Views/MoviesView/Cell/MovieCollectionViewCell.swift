@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var movieThumbnailImageView: UIImageView!
@@ -19,6 +20,9 @@ class MovieCollectionViewCell: UICollectionViewCell {
         movieThumbnailImageView.image = Movie.thumbnail
         if(!Movie.isThumbnailLoaded){
             movieLoadingIndicator.startAnimating()
+            guard let url = URL(string: "https://image.tmdb.org/t/p/w500/\(Movie.thumbnailPath)") else { return }
+            movieThumbnailImageView.af.setImage(withURL: url)
+            movieLoadingIndicator.stopAnimating()
         } else {
             movieLoadingIndicator.stopAnimating()
         }

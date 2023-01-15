@@ -37,7 +37,7 @@ class RequestMaker {
             requestURL = "https://api.themoviedb.org/3/movie/popular?api_key=\(apiKey)&language=en-US&page=\(pageToRequest)"
         }
         
-        Alamofire.request(requestURL).responseJSON{ response in
+        Alamofire.AF.request(requestURL).responseJSON{ response in
             switch response.result{
                 
             case .success(let JSON):
@@ -50,18 +50,9 @@ class RequestMaker {
         }
     }
     
-    func requestImage(imagePath: String, completion: @escaping (_ image: UIImage) -> Void) {
-        let fullURL = "https://image.tmdb.org/t/p/w500/\(imagePath)"
-        Alamofire.request(fullURL).responseImage { response in
-            if let image = response.result.value {
-                completion(image)
-            }
-        }
-    }
-    
     func requestGenres() {
         let genresAPIURL = "https://api.themoviedb.org/3/genre/movie/list?api_key=\(apiKey)&language=en-US"
-        Alamofire.request(genresAPIURL).responseJSON{ response in
+        Alamofire.AF.request(genresAPIURL).responseJSON{ response in
             switch response.result{
                 
             case .success(let JSON):
