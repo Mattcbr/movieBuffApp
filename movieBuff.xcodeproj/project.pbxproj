@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -21,6 +21,9 @@
 		2FCA61BE21FCE0A1004CB5B6 /* FavoriteMoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCA61BD21FCE0A1004CB5B6 /* FavoriteMoviesViewController.swift */; };
 		2FCA61C121FCE112004CB5B6 /* FavoriteMoviesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCA61C021FCE112004CB5B6 /* FavoriteMoviesTableViewCell.swift */; };
 		2FCA61C321FCE12C004CB5B6 /* FavoriteMoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCA61C221FCE12C004CB5B6 /* FavoriteMoviesViewModel.swift */; };
+		2FE0D7F329747C49001DB2E6 /* FMDB in Frameworks */ = {isa = PBXBuildFile; productRef = 2FE0D7F229747C49001DB2E6 /* FMDB */; };
+		2FE0D7F629747C68001DB2E6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2FE0D7F529747C68001DB2E6 /* Alamofire */; };
+		2FE0D7F929747C7B001DB2E6 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 2FE0D7F829747C7B001DB2E6 /* AlamofireImage */; };
 		2FF0C04521F8D73000881FC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF0C04421F8D73000881FC2 /* AppDelegate.swift */; };
 		2FF0C04A21F8D73000881FC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FF0C04821F8D73000881FC2 /* Main.storyboard */; };
 		2FF0C04C21F8D73200881FC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FF0C04B21F8D73200881FC2 /* Assets.xcassets */; };
@@ -80,6 +83,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FE0D7F329747C49001DB2E6 /* FMDB in Frameworks */,
+				2FE0D7F629747C68001DB2E6 /* Alamofire in Frameworks */,
+				2FE0D7F929747C7B001DB2E6 /* AlamofireImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +258,11 @@
 			dependencies = (
 			);
 			name = movieBuff;
+			packageProductDependencies = (
+				2FE0D7F229747C49001DB2E6 /* FMDB */,
+				2FE0D7F529747C68001DB2E6 /* Alamofire */,
+				2FE0D7F829747C7B001DB2E6 /* AlamofireImage */,
+			);
 			productName = movieBuff;
 			productReference = 2FF0C04121F8D73000881FC2 /* movieBuff.app */;
 			productType = "com.apple.product-type.application";
@@ -324,6 +335,11 @@
 				Base,
 			);
 			mainGroup = 2FF0C03821F8D73000881FC2;
+			packageReferences = (
+				2FE0D7F129747C49001DB2E6 /* XCRemoteSwiftPackageReference "fmdb" */,
+				2FE0D7F429747C68001DB2E6 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				2FE0D7F729747C7B001DB2E6 /* XCRemoteSwiftPackageReference "AlamofireImage" */,
+			);
 			productRefGroup = 2FF0C04221F8D73000881FC2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -565,8 +581,11 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mattcbr.movieBuff;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -583,8 +602,11 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mattcbr.movieBuff;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -710,6 +732,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2FE0D7F129747C49001DB2E6 /* XCRemoteSwiftPackageReference "fmdb" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ccgus/fmdb";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 2.7.0;
+			};
+		};
+		2FE0D7F429747C68001DB2E6 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 5.6.0;
+			};
+		};
+		2FE0D7F729747C7B001DB2E6 /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/AlamofireImage.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 4.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2FE0D7F229747C49001DB2E6 /* FMDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2FE0D7F129747C49001DB2E6 /* XCRemoteSwiftPackageReference "fmdb" */;
+			productName = FMDB;
+		};
+		2FE0D7F529747C68001DB2E6 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2FE0D7F429747C68001DB2E6 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		2FE0D7F829747C7B001DB2E6 /* AlamofireImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2FE0D7F729747C7B001DB2E6 /* XCRemoteSwiftPackageReference "AlamofireImage" */;
+			productName = AlamofireImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2FF0C03921F8D73000881FC2 /* Project object */;
 }
