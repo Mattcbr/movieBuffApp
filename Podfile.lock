@@ -12,7 +12,7 @@ DEPENDENCIES:
   - FMDB
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - AlamofireImage
     - FMDB
@@ -24,4 +24,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 69d17ca5092e15b40b369190eea910fd2bb53c96
 
-COCOAPODS: 1.5.2
+COCOAPODS: 1.11.2
