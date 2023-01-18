@@ -76,12 +76,12 @@ class FavoriteMoviesViewController: UITableViewController {
     
     // MARK: - Navigation
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let selectedCell = sender as! FavoriteMoviesTableViewCell
         let selectedCellIndexPath = self.tableView.indexPath(for: selectedCell)
         let selectedMovie = model?.favoriteMoviesArray[selectedCellIndexPath!.row]
         
         let destinationViewController = segue.destination as! DetailsViewController
         destinationViewController.selectedMovie = selectedMovie
-    }
+    }*/
 }

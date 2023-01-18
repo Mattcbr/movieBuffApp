@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 private let reuseIdentifier = "movieCell"
 
@@ -97,6 +98,16 @@ class MoviesViewController: UICollectionViewController {
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // Add a guard to the count here, just to be safe
+        guard let model = model else { return }
+        let selectedMovie = isFiltering() ? filteredMovies[indexPath.row] : model.moviesArray[indexPath.row]
+        let detailsView = DetailsViewController(selectedMovie: selectedMovie)
+        let hostingVC = UIHostingController(rootView: detailsView)
+        
+        self.present(hostingVC, animated: true)
+    }
+    
     //MARK: Request Delegate View Handling functions
     
     func didLoadPopularMovies() {
@@ -132,15 +143,6 @@ class MoviesViewController: UICollectionViewController {
     
     // MARK: - Navigation
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        let selectedCell = sender as! MovieCollectionViewCell
-        let selectedCellIndexPath = self.collectionView.indexPath(for: selectedCell)
-        let selectedMovie = model!.moviesArray[selectedCellIndexPath!.row]
-        
-        let destinationViewController = segue.destination as! DetailsViewController
-        destinationViewController.selectedMovie = selectedMovie
-    }
 }
 
 extension MoviesViewController: UISearchResultsUpdating{
